@@ -3,14 +3,14 @@ import Alert from "./components/Alert";
 import Button from "./components/Button";
 
 function App() {
-  const [alertVisible, setAlertVisiblity] = useState(false);
+  const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
     <div>
       {alertVisible && (
-        <Alert onClose={() => setAlertVisiblity(false)}>My alert</Alert>
+        <Alert onClose={() => setAlertVisibility(false)}>My alert</Alert>
       )}
-      <Button onClick={() => setAlertVisiblity(true)}>My Button</Button>
+      <Button onClick={() => setAlertVisibility(true)}>My Button</Button>
     </div>
   );
 }
