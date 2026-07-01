@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     setLoading(true);
 
-    const { request, cancel } = userService.getAllUsers();
+    const { request, cancel } = userService.getAll<User>();
 
     request
       .then((res) => {
@@ -30,7 +30,7 @@ function App() {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    const { request } = userService.deleteUser(user.id);
+    const { request } = userService.delete(user.id);
     request.catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
@@ -42,7 +42,7 @@ function App() {
     const newUser = { id: 0, name: "Mosh" };
     setUsers([...users, newUser]);
 
-    const { request } = userService.addUser(newUser);
+    const { request } = userService.create(newUser);
     request
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
       .catch((err) => {
